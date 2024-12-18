@@ -16,7 +16,7 @@ import { Notice } from './notice.entity';
           entities: [__dirname + '/../**/*.entity{.ts,.js}'],
           synchronize: true,
         }),
-        TypeOrmModule.forFeature([Notice]), // Register the Room entity here
+        TypeOrmModule.forFeature([Notice]),
       ],
       controllers: [NoticeController],
       providers: [NoticeService],
