@@ -13,9 +13,14 @@ import { VisitorModule } from './visitor/visitor.module';
 import { LockerController } from './locker/locker.controller';
 import { LockerService } from './locker/locker.service';
 import { LockerModule } from './locker/locker.module';
+import { ParkingController } from './parking/parking.controller';
+import { ParkingService } from './parking/parking.service';
+import { ParkingModule } from './parking/parking.module';
 
 @Module({
-  imports: [RoomModule, NoticeModule, VisitorModule, LockerModule],
+  imports: [RoomModule, NoticeModule, VisitorModule, LockerModule, ParkingModule],
+  // controllers: [ParkingController],
+  // providers: [ParkingService],
   // controllers: [LockerController],
   // providers: [LockerService],
   // controllers: [VisitorController],

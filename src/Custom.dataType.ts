@@ -7,6 +7,7 @@ export interface visitor_Data {
    visit_reason: string
 }
 
+// Locker 
 export type LockerSizeType = 'medium' | 'normal' | 'large';
 export type LockerStatusType = 'reserved' | 'free'; 
 export type paymentStatusType = 'paid' | 'unpaid'; 
@@ -27,4 +28,21 @@ export interface Reserve_Locker_type{
    locker_rent_date:Date, 
    locker_status: LockerStatusType,
    payment_status: paymentStatusType
+}
+
+
+// Parking
+export type parking_type = 'car' | 'bike'; 
+export type parking_status_type = 'reserved' | 'free'; 
+export type payment_status_type = 'paid' | 'unpaid'; 
+
+export interface parkingData_type{
+   parking_id: string, 
+   parking_type: parking_type, 
+   parking_rent: number, 
+   parking_status:parking_status_type, 
+   reserved_by: string | null,
+   reserved_date:Date| null,
+   payment_status:payment_status_type | null
+
 }
