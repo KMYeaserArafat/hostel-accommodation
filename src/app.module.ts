@@ -10,9 +10,14 @@ import { NoticeModule } from './notice/notice.module';
 import { VisitorController } from './visitor/visitor.controller';
 import { VisitorService } from './visitor/visitor.service';
 import { VisitorModule } from './visitor/visitor.module';
+import { LockerController } from './locker/locker.controller';
+import { LockerService } from './locker/locker.service';
+import { LockerModule } from './locker/locker.module';
 
 @Module({
-  imports: [RoomModule, NoticeModule, VisitorModule],
+  imports: [RoomModule, NoticeModule, VisitorModule, LockerModule],
+  // controllers: [LockerController],
+  // providers: [LockerService],
   // controllers: [VisitorController],
   // providers: [VisitorService],
   // controllers: [NoticeController],
