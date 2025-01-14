@@ -12,7 +12,7 @@ export class MailService {
       secure: false, 
       auth: {
         user: 'kmyeaserarafat1971@gmail.com', // Your Gmail address
-        pass: 'bbxq pttl epcb bktx', // App Password, not your Gmail account password
+        pass: '', // App Password, not your Gmail account password
       },
       debug: true, 
       logger: true, 
