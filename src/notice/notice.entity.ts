@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
 
 @Entity('notice')
 export class Notice {
@@ -14,4 +14,6 @@ export class Notice {
   @Column({ type: 'varchar' })
   notice: string;
 
+  @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'  })
+  post_date: Date;
 }

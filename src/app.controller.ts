@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, UseGuards, Request } from '@nestjs/common';
 import { AppService } from './app.service';
 import { homeMessageType } from './app.datatype';
 
@@ -10,4 +10,5 @@ export class AppController {
   getHomePage():homeMessageType{
     return this.appService.setHomePage(); 
   }
+  
 }

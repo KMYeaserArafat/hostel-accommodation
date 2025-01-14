@@ -1,5 +1,6 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { NoticeService } from './notice.service';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('notice')
 export class NoticeController {
@@ -20,12 +21,14 @@ export class NoticeController {
 
     // Post a new notice
     @Post('/addNewNotice')
+    @UseGuards(AuthGuard('jwt'))
     addNewNotice(@Body() data){
         return this.noticeService.addNewNotice(data); 
     }
 
     // Update a notice by notice_ID,
     @Put('/updateNotice/:id')
+    @UseGuards(AuthGuard('jwt'))
     updateNotice(@Param('id') notice_id:string, @Body()  update_data){
         return this.noticeService.updateNotice(notice_id, update_data); 
     }
@@ -33,6 +36,7 @@ export class NoticeController {
 
     // Delete a notice by notice_delete, 
     @Delete('/deleteNotice/:id')
+    @UseGuards(AuthGuard('jwt'))
     deleteNotice(@Param('id') notice_id:string){
         return this.noticeService.deleteNotice(notice_id); 
     }

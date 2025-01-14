@@ -1,5 +1,6 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { RoomService } from './room.service';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('room')
 export class RoomController {
@@ -24,19 +25,22 @@ export class RoomController {
         return this.roomService.getSearchRoom(id); 
     }
 
-    // Add new Room, 
+    // Add new Room by admin 
     @Post('/addNewRoom')
+    @UseGuards(AuthGuard('jwt'))
     addNewRoom(@Body() data:any){
         return this.roomService.addNewRoom(data); 
     }
-    // Update Room Information, 
+    // Update Room Information by admin 
     @Put('/updateRoom/:id')
+    @UseGuards(AuthGuard('jwt'))
     updateRoom(@Param('id') updateId:string, @Body() updatedData:any){
         return this.roomService.updateRoom(updateId, updatedData); 
     }
 
-    // Delete Room 
+    // Delete Room by admin, 
     @Delete('/deleteRoom/:id')
+    @UseGuards(AuthGuard('jwt'))
     deleteRoom(@Param('id') id:string){
         return this.roomService.deleteRoom(id); 
     }

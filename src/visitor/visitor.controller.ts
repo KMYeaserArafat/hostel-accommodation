@@ -1,6 +1,7 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { VisitorService } from './visitor.service';
 import { visitor_Data } from 'src/Custom.dataType';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('visitor')
 export class VisitorController {
@@ -9,6 +10,7 @@ export class VisitorController {
 
     // Show all visitor, 
     @Get()
+    @UseGuards(AuthGuard('jwt'))
     ShowAllVisitor(){
         return this.visitorService.ShowAllVisitor(); 
     }
@@ -16,6 +18,7 @@ export class VisitorController {
 
     // Register new visitor, 
     @Post('/registerNewVisitor')
+    @UseGuards(AuthGuard('jwt'))
     RegisterNewVisitor(@Body() registerData:visitor_Data){
         return this.visitorService.RegisterNewVisitor(registerData); 
     }
@@ -23,6 +26,7 @@ export class VisitorController {
 
     // Search Visitor by using date, 
     @Get('/:date')
+    @UseGuards(AuthGuard('jwt'))
     SearchVisitor(@Param('date') searchDate:Date){
         return this.visitorService.SearchVisitor(searchDate); 
     }
@@ -31,6 +35,7 @@ export class VisitorController {
 
     // Update Visitor Information
     @Put('/updateVisitor/:id')
+    @UseGuards(AuthGuard('jwt'))
     UpdateVisitor(@Param('id') visitor_id:number,  @Body() updateData:visitor_Data){
         return this.visitorService.UpdateVisitor(visitor_id, updateData); 
     }
@@ -38,13 +43,9 @@ export class VisitorController {
 
     // Remove or delete visitor information, 
     @Delete('/deleteVisitor/:id')
+    @UseGuards(AuthGuard('jwt'))
     DeleteVisitor(@Param('id') id:number){
         return this.visitorService.DeleteVisitor(id); 
     }
-
-
-    
-
-
 
 }
